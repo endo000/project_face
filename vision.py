@@ -65,7 +65,8 @@ def verify(images):
 
     prep_images = np.array([preprocess(img, input_shape) for img in images])
 
-    predictions = model.predict(prep_images, verbose=0)
+    # predictions = model.predict(prep_images, verbose=0)
+    predictions = [model.predict([prep_img]) for prep_img in prep_images]
 
     distance = calculate_cosine(predictions)
 
